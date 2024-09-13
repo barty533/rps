@@ -1,37 +1,135 @@
 <head>
 <script>console.log("Hello World");
 
-let k = "kamien";
-let p = "papier";
-let n = "nozyce";
+let x;
 let odp;
+let humanScore = 0;
+let computerScore = 0;
+
 
 function getComputerChoice()
     {
       //wylosuj jeden sposrod trzech numerow
       let random = Math.floor(Math.random()*3);
-      console.log(random);
+     
       //dopasuj wartosc do symbolu
     if (random == 0)
     {
 
-    return console.log("kamien");
+    return "kamien";
     }
     else if (random == 1)
     {
-    return console.log("papier");
+    return "papier";
     }
     else
     {
-    return console.log("nozyce");
+    return "nozyce";
     }   
      
     }
    
 function getHumanChoice(odp = prompt("wybierz symbol k = kamien p = papier n = nozyce: "))
 {
-return console.log(odp);
+    if (odp == "k")
+    {
+    return "kamien";
+    }
+    else if (odp == 'p')
+    {
+    return "papier";
+    }
+    else if (odp == 'n')
+    {
+    return "nozyce";
+    } 
+    else
+    {
+    return "podano zle dane";
+    }
 }
-   getHumanChoice();
+
+let computerChoice;
+let humanChoice;
+
+function playRound(humanChoice = getHumanChoice(), computerChoice = getComputerChoice())
+{
+    if(humanChoice == 'kamien')
+{
+    if(computerChoice == 'kamien')
+    {
+   return console.log("remis");
+    }
+    else if(computerChoice == 'papier')
+    {
+        console.log("przegrana");
+        return computerScore++;
+    }
+    else if(computerChoice == 'nozyce')
+    {
+        console.log("wygrana");
+        return humanScore++;
+
+    }
+    
+}
+
+else if(humanChoice == 'papier')
+{
+    if(computerChoice == 'papier')
+    {
+   return console.log("remis");
+    }
+    else if(computerChoice == 'nozyce')
+    {
+        console.log("przegrana");
+        return computerScore++;
+    }
+    else if(computerChoice == 'kamien')
+    {
+        console.log("wygrana");
+        return humanScore++;
+
+    }
+    
+}
+
+else if(humanChoice == 'nozyce')
+{
+    if(computerChoice == 'nozyce')
+    {
+   return console.log("remis");
+    }
+    else if(computerChoice == 'kamien')
+    {
+        console.log("przegrana");
+        return computerScore++;
+    }
+    else if(computerChoice == 'papier')
+    {
+        console.log("wygrana");
+        return humanScore++;
+
+    }
+    
+}
+
+
+}
+
+function playGame(x = playRound(), humanScore, computerScore)
+{
+    return x;
+}
+
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
+
+
+console.log('twoj wynik: ' + humanScore);
+console.log('wynik komputera: ' + computerScore);
 </script>
 </head>
