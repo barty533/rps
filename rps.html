@@ -1,10 +1,13 @@
 <head>
-<script>console.log("Hello World");
+<script>
 
 let x;
 let odp;
 let humanScore = 0;
 let computerScore = 0;
+
+
+
 
 
 function getComputerChoice()
@@ -15,11 +18,12 @@ function getComputerChoice()
       //dopasuj wartosc do symbolu
     if (random == 0)
     {
-
+    
     return "kamien";
     }
     else if (random == 1)
     {
+        
     return "papier";
     }
     else
@@ -29,33 +33,17 @@ function getComputerChoice()
      
     }
    
-function getHumanChoice(odp = prompt("wybierz symbol k = kamien p = papier n = nozyce: "))
-{
-    if (odp == "k")
-    {
-    return "kamien";
-    }
-    else if (odp == 'p')
-    {
-    return "papier";
-    }
-    else if (odp == 'n')
-    {
-    return "nozyce";
-    } 
-    else
-    {
-    return "podano zle dane";
-    }
-}
+
 
 let computerChoice;
 let humanChoice;
 
-function playRound(humanChoice = getHumanChoice(), computerChoice = getComputerChoice())
+function playRound(humanChoice , computerChoice = getComputerChoice())
 {
     if(humanChoice == 'kamien')
+    
 {
+    
     if(computerChoice == 'kamien')
     {
    return console.log("remis");
@@ -117,19 +105,115 @@ else if(humanChoice == 'nozyce')
 
 }
 
-function playGame(x = playRound(), humanScore, computerScore)
-{
-    return x;
-}
-
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
 
 
-console.log('twoj wynik: ' + humanScore);
-console.log('wynik komputera: ' + computerScore);
+
+
+
+
+
 </script>
 </head>
+<body>
+    <button id = "kBtn">Kamien</button><br>
+    <button id = "pBtn">Papier</button><br>
+    <button id = "nBtn">Nozyce</button><br>
+
+
+<script>
+
+let kBtn = document.querySelector("#kBtn");
+let pBtn = document.querySelector("#pBtn");
+let nBtn = document.querySelector("#nBtn");
+
+const container = document.querySelector("body");
+let div = document.createElement("div");
+let div2 = document.createElement("div");
+const head1 = document.createElement("h2");
+
+
+
+function whoWon(humanScore, computerScore)
+{
+    if(humanScore == 5)
+{
+    head1.textContent = "Gratulacje wygrales";
+    head1.style.color = "green";
+    container.appendChild(head1);
+    return;
+}
+    if(computerScore == 5)
+{
+    head1.textContent = "Niestety przegrales";
+    head1.style.color = "red";
+    container.appendChild(head1);
+    return;
+    
+}
+}
+
+
+kBtn.addEventListener("click", function()
+{
+    playRound('kamien')
+    div.textContent = "twoj wynik:" + humanScore ;
+    div2.textContent = "wynik komputera: " + computerScore;
+    container.appendChild(div)
+    container.appendChild(div2)
+    whoWon(humanScore, computerScore);
+    if (humanScore == 5  || computerScore == 5 )
+{
+    div = "stop";
+    div2 = "stop";
+}
+
+}
+)
+
+pBtn.addEventListener("click", function()
+{
+    playRound('papier')
+    div.textContent = "twoj wynik:" + humanScore;
+    div2.textContent = "wynik komputera: " + computerScore;
+    container.appendChild(div)
+    container.appendChild(div2)
+    whoWon(humanScore, computerScore);
+    if (humanScore == 5  || computerScore == 5 )
+{
+    div = "stop";
+    div2 = "stop";
+}
+    
+}
+)
+
+nBtn.addEventListener("click", function()
+{
+    playRound('nozyce')
+    div.textContent = "twoj wynik:" + humanScore;
+    div2.textContent = "wynik komputera: " + computerScore;
+    container.appendChild(div)
+    container.appendChild(div2)
+    whoWon(humanScore, computerScore);
+    if (humanScore == 5  || computerScore == 5 )
+{
+    div = "stop";
+    div2 = "stop";
+}
+    
+}
+)
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
